@@ -53,7 +53,6 @@ jobs:
         with:
           name: firmware
           path: |
-            prospector-central.uf2
             cornix-left.uf2
             cornix-right.uf2
             LICENSES/*

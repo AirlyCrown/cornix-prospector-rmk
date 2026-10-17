@@ -3,7 +3,7 @@
 
 use rmk::macros::rmk_peripheral;
 
-#[rmk_peripheral(id = 1)]
+#[rmk_peripheral(id = 0)]
 mod keyboard_peripheral {
     use cornix_prospector_rmk::battery_resend::BatteryResendProcessor;
     use cornix_prospector_rmk::indicator::{IndicatorProcessor, RIGHT_ROLES};

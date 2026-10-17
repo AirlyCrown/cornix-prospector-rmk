@@ -7,15 +7,14 @@ tombi = "1.5.4"
 "cargo:cargo-hex-to-uf2" = "0.1.2"
 
 [tasks.build]
-description = "Build dongle central and left/right peripheral firmware"
+description = "Build left central and right peripheral firmware"
 run = "cargo build --release"
 
 [tasks.hex]
 description = "Generate Intel HEX images"
 depends = ["build"]
 run = [
-  "cargo objcopy --release --bin central -- -O ihex prospector-central.hex",
-  "cargo objcopy --release --bin peripheral_left -- -O ihex cornix-left.hex",
+  "cargo objcopy --release --bin central_left -- -O ihex cornix-left.hex",
   "cargo objcopy --release --bin peripheral_right -- -O ihex cornix-right.hex",
 ]
 
@@ -23,7 +22,6 @@ run = [
 description = "Generate uf2 images"
 depends = ["hex"]
 run = [
-  "cargo hex-to-uf2 --input-path prospector-central.hex --output-path prospector-central.uf2 --family nrf52840",
   "cargo hex-to-uf2 --input-path cornix-left.hex --output-path cornix-left.uf2 --family nrf52840",
   "cargo hex-to-uf2 --input-path cornix-right.hex --output-path cornix-right.uf2 --family nrf52840",
 ]
